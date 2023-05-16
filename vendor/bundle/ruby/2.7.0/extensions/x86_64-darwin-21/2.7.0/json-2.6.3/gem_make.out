@@ -1,0 +1,13 @@
+current directory: /Users/anniefung/Desktop/IRP/TABTestKit/vendor/bundle/ruby/2.7.0/gems/json-2.6.3/ext/json
+/Users/anniefung/.rbenv/versions/2.7.0/bin/ruby -I /Users/anniefung/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20230515-60460-9fg261.rb extconf.rb
+creating Makefile
+
+current directory: /Users/anniefung/Desktop/IRP/TABTestKit/vendor/bundle/ruby/2.7.0/gems/json-2.6.3/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/anniefung/Desktop/IRP/TABTestKit/vendor/bundle/ruby/2.7.0/gems/json-2.6.3/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/anniefung/Desktop/IRP/TABTestKit/vendor/bundle/ruby/2.7.0/gems/json-2.6.3/ext/json
+make "DESTDIR=" install

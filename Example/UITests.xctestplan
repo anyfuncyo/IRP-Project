@@ -1,0 +1,27 @@
+{
+  "configurations" : [
+    {
+      "id" : "AEE2D038-0E4D-40DE-AF09-15F64BCFAACB",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "BiometricLogin_AuthenticationFailureTests"
+      ],
+      "target" : {
+        "containerPath" : "container:TABTestKit.xcodeproj",
+        "identifier" : "70FEA77B1F6AC29400633C5C",
+        "name" : "TABTestKit_ExampleUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
