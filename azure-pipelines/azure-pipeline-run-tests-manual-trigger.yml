@@ -10,7 +10,7 @@ jobs:
     dependsOn: []
     steps:
       - template: templates/environment-preparation.yml
-      - template: fastlane.yml
+      - template: templates/fastlane.yml
         parameters:
           lane: "ui_test build_for_testing:true"
       - task: PublishPipelineArtifact@1
