@@ -1,0 +1,21 @@
+trigger:
+  - main
+
+pool:
+  vmImage: "ubuntu-latest"
+
+jobs:
+  - job: build
+    displayName: "build for testing"
+    dependsOn: []
+    steps:
+      - template: templates/environment-preparation.yml
+      - template: fastlane.yml
+        parameters:
+          lane: "ui_test build_for_testing:true"
+      - task: PublishPipelineArtifact@1
+        displayName: "Publish UI test build"
+        inputs:
+          artifactName: $(UI_TESTT_BUILD_ARTIFACT_NAME)
+          targetPath: $(DERIVED_DATA_BUILD_PRODUCTS_PATH)
+  - job: ui_tests

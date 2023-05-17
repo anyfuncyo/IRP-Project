@@ -1,0 +1,7 @@
+variables:
+  - name: UI_TESTT_BUILD_ARTIFACT_NAME
+    value: ui_test_build
+  - name: DERIVED_DATA_PATH
+    value: derived_data
+  - name: DERIVED_DATA_BUILD_PRODUCTS_PATH
+    value: $(DERIVED_DATA_PATH)/Build/Products
