@@ -1,2 +1,8 @@
 steps:
   - template: git-checkout.yml
+  - task: Bash@3
+    displayName: "Print environment variable"
+    inputs:
+      targetType: inline
+      script: |
+        printenv

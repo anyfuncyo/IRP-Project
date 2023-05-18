@@ -1,2 +1,24 @@
+parameters:
+  - name: path
+    type: string
+    default: "/*"
+
 steps:
-  - checkout: 
+  - checkout: none
+  - task: InstallSSHKey@0
+    displayName: "Install SSH key to use with git authentication"
+    condition: succeededOrFailed()
+    inputs:
+      knownHostsEntry: github.com $(github_ssh_public_key_type) $(github_ssh_public_key)
+      sshKeySecureFile: azure_pipeline
+  - bash: |
+      set -x
+
+      git clone --filter=blob:none --no-checkout git@github.com:$NATIVE_IOS_REPO_PATH.git $BUILD_SOURCESDIRECTORY
+      cd $BUILD_SOURCESDIRECTORY
+      git sparse-checkout set "${{ parameters.path }}"
+      git fetch --force --tags --prune --prune-tags --progress origin
+      git fetch --force --tags --prune --prune-tags --progress origin $ASOS_GIT_COMMIT_HASH
+      git checkout --force --progress $ASOS_GIT_COMMIT_HASH
+    displayName: "Checkout $(ASOS_NATIVE_IOS_REPO_PATH) ($(ASOS_GIT_COMMIT_HASH))"
+    name: gitCheckout

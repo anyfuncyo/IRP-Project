@@ -5,3 +5,5 @@ variables:
     value: derived_data
   - name: DERIVED_DATA_BUILD_PRODUCTS_PATH
     value: $(DERIVED_DATA_PATH)/Build/Products
+  - name: NATIVE_IOS_REPO_PATH
+    value: anyfuncyo/IRP-Project
