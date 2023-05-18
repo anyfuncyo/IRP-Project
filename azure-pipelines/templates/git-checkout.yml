@@ -10,7 +10,6 @@ steps:
     condition: succeededOrFailed()
     inputs:
       knownHostsEntry: github.com $(github_ssh_public_key_type) $(github_ssh_public_key)
-      sshKeySecureFile: azure_pipeline
   - bash: |
       set -x
 
