@@ -5,7 +5,7 @@ parameters:
 steps:
   - task: Bash@3
     displayName: "${{ parameters.lane }}"
-    condition: successdedOrFailed()
+    condition: succeededOrFailed()
     inputs:
       targetType: inline
       scripts: |
