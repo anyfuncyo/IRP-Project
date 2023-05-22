@@ -18,7 +18,7 @@ steps:
       cd $BUILD_SOURCESDIRECTORY
       git sparse-checkout set "${{ parameters.path }}"
       git fetch --force --tags --prune --prune-tags --progress origin
-      git fetch --force --tags --prune --prune-tags --progress origin $ASOS_GIT_COMMIT_HASH
-      git checkout --force --progress $ASOS_GIT_COMMIT_HASH
-    displayName: "Checkout $(ASOS_NATIVE_IOS_REPO_PATH) ($(ASOS_GIT_COMMIT_HASH))"
+      git fetch --force --tags --prune --prune-tags --progress origin $GIT_COMMIT_HASH
+      git checkout --force --progress $GIT_COMMIT_HASH
+    displayName: "Checkout $(NATIVE_IOS_REPO_PATH) ($(GIT_COMMIT_HASH))"
     name: gitCheckout

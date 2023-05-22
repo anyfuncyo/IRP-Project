@@ -7,3 +7,5 @@ variables:
     value: $(DERIVED_DATA_PATH)/Build/Products
   - name: NATIVE_IOS_REPO_PATH
     value: anyfuncyo/IRP-Project
+  - name: GIT_COMMIT_HASH
+    value: $(Build.SourceVersion)
