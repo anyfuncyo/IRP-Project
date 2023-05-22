@@ -4,6 +4,9 @@ trigger:
 pool:
   vmImage: "ubuntu-latest"
 
+variables:
+  template: templates/variables.yml
+
 jobs:
   - job: build
     displayName: "build for testing"
