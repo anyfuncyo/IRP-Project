@@ -10,4 +10,4 @@ variables:
   - name: GIT_COMMIT_HASH
     value: $(Build.SourceVersion)
   - name: DEPENDENCIES_SCRIPT_PATH
-    value: $(Build.SourceDirectory)/scripts/dependencies.sh
+    value: $(Build.SourcesDirectory)/scripts/dependencies.sh
