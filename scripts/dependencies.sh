@@ -54,6 +54,9 @@ fi
 bundle install
 
 # Check Xcode version on Azure agent
+echo "--- 🛠️  Force Xcode to use system SSH keys when accessing the git repositories"
+defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES
+
 echo "--- 🛠️  Verifying you have the correct version of Xcode installed.."
 PROJECT_XCODE_VERSION=$(cat .xcode-version)
 INSTALLED_XCODE_VERSION=$(/usr/bin/xcodebuild -version | sed -En 's/Xcode[[:space:]]+([0-9\.]*)/\1/p')
