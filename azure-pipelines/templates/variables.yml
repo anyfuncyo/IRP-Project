@@ -9,3 +9,5 @@ variables:
     value: anyfuncyo/IRP-Project
   - name: GIT_COMMIT_HASH
     value: $(Build.SourceVersion)
+  - name: DEPENDENCIES_SCRIPT_PATH
+    value: $(Build.SourceVersion)/scripts/dependencies.sh

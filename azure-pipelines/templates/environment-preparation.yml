@@ -12,5 +12,5 @@ steps:
     condition: succeededOrFailed()
     inputs:
       targetType: filePath
-      filePath: $()
+      filePath: $(DEPENDENCIES_SCRIPT_PATH)
 
