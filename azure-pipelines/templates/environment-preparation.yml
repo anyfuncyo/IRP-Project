@@ -7,3 +7,10 @@ steps:
       targetType: inline
       script: |
         printenv
+  - task: Bash@3
+    displayName: "Install dependencies"
+    condition: succeededOrFailed()
+    inputs:
+      targetType: filePath
+      filePath: $()
+
