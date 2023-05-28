@@ -2,6 +2,7 @@ parameters:
   - name: path
     type: string
     default: "/*"
+    ssh_private_key_file: azure_pipeline
 
 steps:
   - checkout: none
@@ -10,7 +11,7 @@ steps:
     condition: succeededOrFailed()
     inputs:
       knownHostsEntry: github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCc+gYM4ynytspT79D1K3XNLP0ryXWyoNuySeOnAeTg3nDk3pLWZRN0/Aq3r7g5EA54LyTYz01RvbYSUEUpoZlMUHN2VFPFpZx8aoKVm5/XWFK5OVWpa5tyxzM8H/RmKu96ppvQiOlmmw4ZAVcYxRfZJQu9t5e54Vr4mEQGNskTq9W1VjG1ZAIJm5Bf2Biro5Jlhb27VcxEhpMiTGMFCpg59CFBdQ2fFnx2PxEcI6xHtx0LJQ/pXqqX+hDlQHS6lnDZzBpuE66CZJXgxZ5vtO7zHelJXgK2LAjMl/3rPVzjwUSI0GumoczJmhhGsQzwXP+elBH660DUrcdAsIrLQwVcmmA2MYEFLyg+6hYeIMAnZHqcUW5ijRdj8fwEspn0AvaFW7LWVNW1gn3DavHyy+T9YRwm2GpmEMZYeJZEdqULfrhW7xed1OB4m4qu5QyyDs6eZ0XrH7QZFXVudgB4T+9K+KK22xEpU61dpLjtfCqyv+OsOO/V9/V/WIQYVr4b1KSFzXIBTb1VdBIckX1b/F1/rvcCSdGcFimbR+BIWxuig+tpjSSFfKzNsQ5eMrY/+/FG8R886uglU2zidoTSdWQ0PI97ZHmshT519zFepmuSkdh8Tzd9iziB4frh/je/LDcCKe0ImYpYMYOOkx1wjjZdY38WPJ7GXQc5gZQ8Bf2XHw==
-      sshKeySecureFile: azure_pipeline
+      sshKeySecureFile: ${{ parameters.ssh_private_key_file }}
   - bash: |
       set -x
       git clone --filter=blob:none --no-checkout git@github.com:$NATIVE_IOS_REPO_PATH.git $BUILD_SOURCESDIRECTORY
