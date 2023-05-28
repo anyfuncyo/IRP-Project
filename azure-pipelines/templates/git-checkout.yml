@@ -2,7 +2,6 @@ parameters:
   - name: path
     type: string
     default: "/*"
-    ssh_private_key_file: azure_pipeline
 
 steps:
   - checkout: none
@@ -10,8 +9,8 @@ steps:
     displayName: "Install SSH key to use with git authentication"
     condition: succeededOrFailed()
     inputs:
-      knownHostsEntry: github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCc+gYM4ynytspT79D1K3XNLP0ryXWyoNuySeOnAeTg3nDk3pLWZRN0/Aq3r7g5EA54LyTYz01RvbYSUEUpoZlMUHN2VFPFpZx8aoKVm5/XWFK5OVWpa5tyxzM8H/RmKu96ppvQiOlmmw4ZAVcYxRfZJQu9t5e54Vr4mEQGNskTq9W1VjG1ZAIJm5Bf2Biro5Jlhb27VcxEhpMiTGMFCpg59CFBdQ2fFnx2PxEcI6xHtx0LJQ/pXqqX+hDlQHS6lnDZzBpuE66CZJXgxZ5vtO7zHelJXgK2LAjMl/3rPVzjwUSI0GumoczJmhhGsQzwXP+elBH660DUrcdAsIrLQwVcmmA2MYEFLyg+6hYeIMAnZHqcUW5ijRdj8fwEspn0AvaFW7LWVNW1gn3DavHyy+T9YRwm2GpmEMZYeJZEdqULfrhW7xed1OB4m4qu5QyyDs6eZ0XrH7QZFXVudgB4T+9K+KK22xEpU61dpLjtfCqyv+OsOO/V9/V/WIQYVr4b1KSFzXIBTb1VdBIckX1b/F1/rvcCSdGcFimbR+BIWxuig+tpjSSFfKzNsQ5eMrY/+/FG8R886uglU2zidoTSdWQ0PI97ZHmshT519zFepmuSkdh8Tzd9iziB4frh/je/LDcCKe0ImYpYMYOOkx1wjjZdY38WPJ7GXQc5gZQ8Bf2XHw==
-      sshKeySecureFile: ${{ parameters.ssh_private_key_file }}
+      knownHostsEntry: github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDaVXkFvG79Otn8yDZ8iVxACZ+aBXrxPZzlfNfBmZMxW+uYiJ8+RmO4T/LsciAdLQrtz7mq06sUMGiT68JTjRvs1Ej0nMh33FzDuuh2CQ2+bJmvW7Tt1vnQyxxZLTtnWZMVMl91nPuczTv+jTDRONuOSy6xfrqmL6jInGZW8XL0JUXJTk9EVKYveIrQefejIMq/RiytqG1HjogLVrOrlbNdadUXhTrgJaJ9Q04WiKRMaeJzNlffAXAIHo/s//orDmZA1bT/XDJdk1eNKM7nnD3igbbV7psPUyCUE+gluCnx49XsYKgcBpr+bB/OV6mrSl1xaakBMPeTVJnKTN/AhX607z2NsYyCZmtTNMV91xRzFg4nf/q88kFH5kQ4attZ7urStadTNXywtc7u8C435jH/3yawXFRp+B3w5m1pocZ1PWFF+p7uBP3F2KCsWF8zeUmc0+KjFUgvYtaDkIr2AKkCVwn+NKNpqDyHAwZu347BkWF5RAE5EANA0SNX8W5xQB75eRqf/+9CJpuwBdTLGKMl9r5wxnAqiYOOxr51MrnpF7LiDEdjSeiXhqxuyZuc80hU79hXvlbWQz64ZbMBX0rFB3IIiUnmjh3RTXm+V8HTYpB1FLOnUJy3KPLITpGDHrdGl765kxXQjfEg1UBToqACqUVjk/6aLr+zcVKMP39RUw==
+      sshKeySecureFile: azure_pipeline
   - bash: |
       set -x
       git clone --filter=blob:none --no-checkout git@github.com:$NATIVE_IOS_REPO_PATH.git $BUILD_SOURCESDIRECTORY
