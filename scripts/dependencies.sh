@@ -5,7 +5,7 @@ export PATH=${PATH}:/usr/local/bin
 export LC_ALL="en_US.UTF-8" 
 readonly SCRIPTS_DIR="${BASH_SOURCE[0]%/*}"
 
-cd "${SCRIPTS_DIR}/../../"
+cd "${SCRIPTS_DIR}/.."
 readonly BUNDLER_VERSION_SPEC='~>1.17.2'
 
 # Check if Homebrew is installed
