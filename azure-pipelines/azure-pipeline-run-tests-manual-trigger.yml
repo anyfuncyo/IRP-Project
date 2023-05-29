@@ -11,7 +11,7 @@ jobs:
   - job: build
     steps:
       - script: |
-        SYSTEM=`uname -s` ./config
+          SYSTEM=`uname -s` ./config
       - template: templates/environment-preparation.yml
       - template: templates/fastlane.yml
         parameters:
