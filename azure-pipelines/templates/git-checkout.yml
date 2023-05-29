@@ -13,7 +13,7 @@ steps:
       sshKeySecureFile: azure_pipeline
   - bash: |
       set -x
-      cat ~/.ssh/known_hosts
+      ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       git clone --filter=blob:none --no-checkout git@github.com:$NATIVE_IOS_REPO_PATH.git $BUILD_SOURCESDIRECTORY
       cd $BUILD_SOURCESDIRECTORY
       git sparse-checkout set "${{ parameters.path }}"
