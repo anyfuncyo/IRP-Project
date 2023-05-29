@@ -9,11 +9,11 @@ steps:
     displayName: "Install SSH key to use with git authentication"
     condition: succeededOrFailed()
     inputs:
-      knownHostsEntry: github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDaVXkFvG79Otn8yDZ8iVxACZ+aBXrxPZzlfNfBmZMxW+uYiJ8+RmO4T/LsciAdLQrtz7mq06sUMGiT68JTjRvs1Ej0nMh33FzDuuh2CQ2+bJmvW7Tt1vnQyxxZLTtnWZMVMl91nPuczTv+jTDRONuOSy6xfrqmL6jInGZW8XL0JUXJTk9EVKYveIrQefejIMq/RiytqG1HjogLVrOrlbNdadUXhTrgJaJ9Q04WiKRMaeJzNlffAXAIHo/s//orDmZA1bT/XDJdk1eNKM7nnD3igbbV7psPUyCUE+gluCnx49XsYKgcBpr+bB/OV6mrSl1xaakBMPeTVJnKTN/AhX607z2NsYyCZmtTNMV91xRzFg4nf/q88kFH5kQ4attZ7urStadTNXywtc7u8C435jH/3yawXFRp+B3w5m1pocZ1PWFF+p7uBP3F2KCsWF8zeUmc0+KjFUgvYtaDkIr2AKkCVwn+NKNpqDyHAwZu347BkWF5RAE5EANA0SNX8W5xQB75eRqf/+9CJpuwBdTLGKMl9r5wxnAqiYOOxr51MrnpF7LiDEdjSeiXhqxuyZuc80hU79hXvlbWQz64ZbMBX0rFB3IIiUnmjh3RTXm+V8HTYpB1FLOnUJy3KPLITpGDHrdGl765kxXQjfEg1UBToqACqUVjk/6aLr+zcVKMP39RUw==
-      sshPublicKey: "AAAAB3NzaC1yc2EAAAADAQABAAACAQDaVXkFvG79Otn8yDZ8iVxACZ+aBXrxPZzlfNfBmZMxW+uYiJ8+RmO4T/LsciAdLQrtz7mq06sUMGiT68JTjRvs1Ej0nMh33FzDuuh2CQ2+bJmvW7Tt1vnQyxxZLTtnWZMVMl91nPuczTv+jTDRONuOSy6xfrqmL6jInGZW8XL0JUXJTk9EVKYveIrQefejIMq/RiytqG1HjogLVrOrlbNdadUXhTrgJaJ9Q04WiKRMaeJzNlffAXAIHo/s//orDmZA1bT/XDJdk1eNKM7nnD3igbbV7psPUyCUE+gluCnx49XsYKgcBpr+bB/OV6mrSl1xaakBMPeTVJnKTN/AhX607z2NsYyCZmtTNMV91xRzFg4nf/q88kFH5kQ4attZ7urStadTNXywtc7u8C435jH/3yawXFRp+B3w5m1pocZ1PWFF+p7uBP3F2KCsWF8zeUmc0+KjFUgvYtaDkIr2AKkCVwn+NKNpqDyHAwZu347BkWF5RAE5EANA0SNX8W5xQB75eRqf/+9CJpuwBdTLGKMl9r5wxnAqiYOOxr51MrnpF7LiDEdjSeiXhqxuyZuc80hU79hXvlbWQz64ZbMBX0rFB3IIiUnmjh3RTXm+V8HTYpB1FLOnUJy3KPLITpGDHrdGl765kxXQjfEg1UBToqACqUVjk/6aLr+zcVKMP39RUw=="
-      sshKeySecureFile: "azure_pipeline"
+      knownHostsEntry: github.com $(github_ssh_public_key_type) $(github_ssh_public_key)
+      sshKeySecureFile: azure_pipeline
   - bash: |
       set -x
+      cat ~/.ssh/known_hosts
       git clone --filter=blob:none --no-checkout git@github.com:$NATIVE_IOS_REPO_PATH.git $BUILD_SOURCESDIRECTORY
       cd $BUILD_SOURCESDIRECTORY
       git sparse-checkout set "${{ parameters.path }}"
