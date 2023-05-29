@@ -8,9 +8,15 @@ steps:
       script: |
         printenv
   - task: Bash@3
+    displayName: "Save home directory as a variable"
+    condition: succeededOrFailed()
+    inputs:
+      targetType: inline
+      script: |
+        echo "##vso[task.setvariable variable=agentHomeDirectory]$HOME"
+  - task: Bash@3
     displayName: "Install dependencies"
     condition: succeededOrFailed()
     inputs:
       targetType: filePath
       filePath: $(DEPENDENCIES_SCRIPT_PATH)
-
