@@ -36,7 +36,7 @@ eval "$(rbenv init -)"
 ruby_version=$(cat .ruby-version)
 if [ -z "$(rbenv version | grep $ruby_version)" ]; then
   echo "--- ⚠️  Installing Ruby $ruby_version..."
-  rbenv install --skip-existing $ruby_version
+  rbenv install --skip-existing --verbose  $ruby_version
   rbenv shell $ruby_version
 else
   echo "--- ✅  Ruby $ruby_version already installed"
