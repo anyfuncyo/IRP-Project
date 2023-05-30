@@ -11,3 +11,5 @@ variables:
     value: $(Build.SourceVersion)
   - name: DEPENDENCIES_SCRIPT_PATH
     value: $(Build.SourcesDirectory)/scripts/dependencies.sh
+  - name: GEMFILE_LOCK_PATH
+    value: $(Build.SourcesDirectory)/Gemfile.lock

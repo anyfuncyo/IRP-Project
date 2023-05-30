@@ -14,6 +14,13 @@ steps:
       targetType: inline
       script: |
         echo "##vso[task.setvariable variable=agentHomeDirectory]$HOME"
+  - task: Cache@2
+    displayName: "Cache Ruby gems written in gemfile.lock"
+    condition: succeededOrFailed()
+    continueOnError: true
+    inputs:
+      key: "$(GEMFILE_LOCK_PATH) | $(DEPENDENCIES_SCRIPT_PATH)"
+      path: $(agentHomeDirectory)/.rbenv
   - task: Bash@3
     displayName: "Install dependencies"
     condition: succeededOrFailed()
