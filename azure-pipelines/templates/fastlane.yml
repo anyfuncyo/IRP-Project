@@ -10,4 +10,6 @@ steps:
       targetType: inline
       scripts: |
         eval "$(rbenv init -)"
+        echo "Before running bundle exec fastlane"
         bundle exec fastlane ${{ parameters.lane }}
+        echo "After running bundle exec fastlane"
