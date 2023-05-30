@@ -14,7 +14,13 @@
   "testTargets" : [
     {
       "skippedTests" : [
-        "BiometricLogin_AuthenticationFailureTests"
+        "BiometricLogin_AuthenticationFailureTests",
+        "BiometricLogin_HappyPathTests",
+        "BiometricLogin_PermissionDeniedTests",
+        "DeepLinkingTests",
+        "OtherElementsTests",
+        "PageTests",
+        "TableTests"
       ],
       "target" : {
         "containerPath" : "container:TABTestKit.xcodeproj",

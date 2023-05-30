@@ -2,9 +2,12 @@
 
 platform :ios do
     desc "Run UI tests"
-    lane :UItests do
-        run_tests(workspace: "Example/TABTestKit.xcworkspace",
-            devices: ["iPhone 11 (16.2)"],
-            scheme: "TABTestKit_ExampleUITests")
+    lane :ui_test do
+        run_tests(
+            workspace: "Example/TABTestKit.xcworkspace",
+            devices: ["iPhone 14 (16.2)"],
+            scheme: "TABTestKit_ExampleUITests",
+            testplan: "UITests"
+        )
     end
 end

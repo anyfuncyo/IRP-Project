@@ -1,10 +1,8 @@
-default_platform(:ios)
+import 'Fastfiles/TestFastfile'
 
-platform :ios do
-    desc "Run UI tests"
-    lane :ui_test do
-        run_tests(workspace: "Example/TABTestKit.xcworkspace",
-            devices: ["iPhone 11 (16.2)"],
-            scheme: "TABTestKit_ExampleUITests")
-    end
-end
+# minimum fastlane version required
+fastlane_version '2.100.1'
+default_platform :ios
+
+# import third-party gems
+fastlane_require 'xcodeproj'

@@ -15,10 +15,10 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
-### ios UItests
+### ios ui_test
 
 ```sh
-[bundle exec] fastlane ios UItests
+[bundle exec] fastlane ios ui_test
 ```
 
 Run UI tests
