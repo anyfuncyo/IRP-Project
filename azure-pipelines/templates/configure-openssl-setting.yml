@@ -1,0 +1,10 @@
+trigger:
+  - OpenSSL_1_1_1t
+
+pool:
+  vmImage: "macOS-12"
+
+steps:
+  - script: |
+      SYSTEM=`uname -s` ./config
+    displayName: Configure
