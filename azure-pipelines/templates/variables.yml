@@ -10,6 +10,6 @@ variables:
   - name: GIT_COMMIT_HASH
     value: $(Build.SourceVersion)
   - name: DEPENDENCIES_SCRIPT_PATH
-    value: $(Build.SourcesDirectory)/scripts/dependencies.sh
+    value: $(Build.SourcesDirectory)/scripts/dependencies-without-ruby-setup.sh
   - name: GEMFILE_LOCK_PATH
     value: $(Build.SourcesDirectory)/Gemfile.lock

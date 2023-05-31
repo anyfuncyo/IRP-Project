@@ -10,7 +10,7 @@ variables:
 jobs:
   - job: build
     steps:
-      - template: templates/environment-preparation.yml
+      - template: templates/environment-preparation-without-caching.yml
       - template: templates/fastlane.yml
         parameters:
           lane: "ui_test build_for_testing:true"
