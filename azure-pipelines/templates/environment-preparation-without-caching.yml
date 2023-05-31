@@ -15,8 +15,9 @@ steps:
       script: |
         echo "##vso[task.setvariable variable=agentHomeDirectory]$HOME"
   - task: UseRubyVersion@0
+    displayName: "Select Ruby version 2.7.0 to run on an agent"
     inputs:
-      versionSpec: '>= 2.7'
+      versionSpec: ">= 2.7"
       addToPath: true
   - task: Bash@3
     displayName: "Install dependencies"
