@@ -8,7 +8,7 @@ steps:
     condition: succeededOrFailed()
     inputs:
       targetType: inline
-      scripts: |
+      script: |
         eval "$(rbenv init -)"
         echo "Before running bundle exec fastlane"
         bundle exec fastlane ${{ parameters.lane }}
