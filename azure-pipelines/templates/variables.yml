@@ -1,10 +1,10 @@
 variables:
-  - name: UI_TESTT_BUILD_ARTIFACT_NAME
-    value: ui_test_build
+  - name: UI_TEST_RESULT_ARTIFACT_NAME
+    value: ui_test_result
   - name: DERIVED_DATA_PATH
     value: derived_data
-  - name: DERIVED_DATA_BUILD_PRODUCTS_PATH
-    value: $(DERIVED_DATA_PATH)/Build/Products
+  - name: TEST_OUTPUT_PATH
+    value: $(Build.SourcesDirectory)/fastlane/test_output
   - name: NATIVE_IOS_REPO_PATH
     value: anyfuncyo/IRP-Project
   - name: GIT_COMMIT_HASH

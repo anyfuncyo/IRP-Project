@@ -15,7 +15,7 @@ jobs:
         parameters:
           lane: "ui_test build_for_testing:true"
       - task: PublishPipelineArtifact@1
-        displayName: "Publish UI test build"
+        displayName: "Publish UI test result"
         inputs:
-          artifactName: $(UI_TESTT_BUILD_ARTIFACT_NAME)
-          targetPath: $(DERIVED_DATA_BUILD_PRODUCTS_PATH)
+          artifactName: $(UI_TEST_RESULT_ARTIFACT_NAME)
+          targetPath: $(TEST_OUTPUT_PATH)
