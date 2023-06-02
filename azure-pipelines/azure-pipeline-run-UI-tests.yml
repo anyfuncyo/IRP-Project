@@ -21,9 +21,9 @@ stages:
         parameters:
           lane: "ui_test build_for_testing:true"
       - steps:
-        - task: PublishPipelineArtifact@1
-          displayName: "Publish UI test result"
-          condition: succeededOrFailed()
-          inputs:
-            artifactName: $(UI_TEST_RESULT_ARTIFACT_NAME)
-            targetPath: $(TEST_OUTPUT_PATH)
+          - task: PublishPipelineArtifact@1
+            displayName: "Publish UI test result"
+            condition: succeededOrFailed()
+            inputs:
+              artifactName: $(UI_TEST_RESULT_ARTIFACT_NAME)
+              targetPath: $(TEST_OUTPUT_PATH)
