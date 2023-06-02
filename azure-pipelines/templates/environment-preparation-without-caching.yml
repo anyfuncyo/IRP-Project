@@ -1,5 +1,5 @@
 jobs:
-  - job: set up
+  - job: set_up
     steps:
       - template: git-checkout.yml
       - task: Bash@3
