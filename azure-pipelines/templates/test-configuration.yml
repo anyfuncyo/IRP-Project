@@ -1,8 +1,9 @@
+# ui-test-shards.yml
 jobs:
   - job: build
     steps:
-      - template: templates/environment-preparation-without-caching.yml
-      - template: templates/fastlane.yml
+      - template: environment-preparation-without-caching.yml
+      - template: fastlane.yml
         parameters:
           lane: "ui_test build_for_testing:true"
       - task: PublishPipelineArtifact@1
