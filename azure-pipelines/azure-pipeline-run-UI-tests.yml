@@ -20,7 +20,7 @@ stages:
       - template: templates/fastlane.yml
         parameters:
           lane: "ui_test build_for_testing:true"
-      steps:
+      - steps:
         - task: PublishPipelineArtifact@1
           displayName: "Publish UI test result"
           condition: succeededOrFailed()
