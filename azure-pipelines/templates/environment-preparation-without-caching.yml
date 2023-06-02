@@ -1,9 +1,7 @@
 jobs:
-
-  - job: Set up
-      - template: git-checkout.yml
-
+  - job: set up
     steps:
+      - template: git-checkout.yml
       - task: Bash@3
         displayName: "Print environment variable"
         condition: succeededOrFailed()
