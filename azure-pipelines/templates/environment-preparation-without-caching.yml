@@ -1,31 +1,29 @@
-jobs:
-  - job: set_up
-    steps:
-      - template: git-checkout.yml
-      - task: Bash@3
-        displayName: "Print environment variable"
-        condition: succeededOrFailed()
-        inputs:
-          targetType: inline
-          script: |
-            printenv
-      - task: Bash@3
-        displayName: "Save home directory as a variable"
-        condition: succeededOrFailed()
-        inputs:
-          targetType: inline
-          script: |
-            echo "##vso[task.setvariable variable=agentHomeDirectory]$HOME"
-      - task: UseRubyVersion@0
-        displayName: "Select Ruby version > 2.7.0 to run on an agent"
-        inputs:
-          versionSpec: ">= 2.7"
-          addToPath: true
-      - task: Bash@3
-        displayName: "Install dependencies"
-        condition: succeededOrFailed()
-        inputs:
-          targetType: filePath
-          filePath: $(DEPENDENCIES_SCRIPT_PATH)
-        env:
-          RUBY_CONFIGURE_OPTS: "--with-openssl-dir=/usr/local/opt/openssl@1.1"
+steps:
+  - template: git-checkout.yml
+  - task: Bash@3
+    displayName: "Print environment variable"
+    condition: succeededOrFailed()
+    inputs:
+      targetType: inline
+      script: |
+        printenv
+  - task: Bash@3
+    displayName: "Save home directory as a variable"
+    condition: succeededOrFailed()
+    inputs:
+      targetType: inline
+      script: |
+        echo "##vso[task.setvariable variable=agentHomeDirectory]$HOME"
+  - task: UseRubyVersion@0
+    displayName: "Select Ruby version > 2.7.0 to run on an agent"
+    inputs:
+      versionSpec: ">= 2.7"
+      addToPath: true
+  - task: Bash@3
+    displayName: "Install dependencies"
+    condition: succeededOrFailed()
+    inputs:
+      targetType: filePath
+      filePath: $(DEPENDENCIES_SCRIPT_PATH)
+    env:
+      RUBY_CONFIGURE_OPTS: "--with-openssl-dir=/usr/local/opt/openssl@1.1"

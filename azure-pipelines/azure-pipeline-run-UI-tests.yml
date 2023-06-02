@@ -8,15 +8,7 @@ variables:
   - template: templates/variables.yml
 
 stages:
-  - stage: build
-    displayName: Build app
+  - stage: ui_tests
+    displayName: "UI tests"
     jobs:
-      - template: templates/environment-preparation-without-caching.yml
-
-  - stage: test
-    displayName: Run UI tests
-    dependsOn: [build]
-    jobs:
-      - template: templates/fastlane.yml
-        parameters:
-          lane: "ui_test build_for_testing:true"
+      - template: templates/test-configuration.yml
