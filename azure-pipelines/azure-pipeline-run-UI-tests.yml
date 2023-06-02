@@ -7,15 +7,22 @@ pool:
 variables:
   - template: templates/variables.yml
 
-jobs:
-  - job: build
-    steps:
+stages:
+  - stage: build
+    displayName: Build app
+    jobs:
       - template: templates/environment-preparation-without-caching.yml
+
+  - stage: test
+    displayName: Run UI tests
+    dependsOn: [build]
+    jobs:
       - template: templates/fastlane.yml
         parameters:
           lane: "ui_test build_for_testing:true"
       - task: PublishPipelineArtifact@1
         displayName: "Publish UI test result"
+        condition: succeededOrFailed()
         inputs:
           artifactName: $(UI_TEST_RESULT_ARTIFACT_NAME)
           targetPath: $(TEST_OUTPUT_PATH)
