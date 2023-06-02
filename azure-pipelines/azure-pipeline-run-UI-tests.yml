@@ -16,11 +16,11 @@ stages:
   - stage: test
     displayName: Run UI tests
     dependsOn: [build]
-    jobs:
+    job:
       - template: templates/fastlane.yml
         parameters:
           lane: "ui_test build_for_testing:true"
-      - steps:
+      - step:
           - task: PublishPipelineArtifact@1
             displayName: "Publish UI test result"
             condition: succeededOrFailed()
