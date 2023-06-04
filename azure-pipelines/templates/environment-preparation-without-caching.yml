@@ -21,6 +21,8 @@ steps:
       addToPath: true
   - task: CocoaPods@0
     displayName: "Install cocoapods and run pod install"
+    inputs:
+      projectDirectory: $(PODFILE_PATH)
   - task: Bash@3
     displayName: "Install dependencies"
     condition: succeededOrFailed()
