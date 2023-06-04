@@ -3,7 +3,7 @@ jobs:
   - job: build
     displayName: "Run tests"
     steps:
-      - template: environment-preparation-without-caching.yml
+      - template: environment-preparation-with-caching.yml
       - template: fastlane.yml
         parameters:
           lane: "ui_test build_for_testing:true"

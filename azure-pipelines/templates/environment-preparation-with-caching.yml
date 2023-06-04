@@ -20,7 +20,23 @@ steps:
     continueOnError: true
     inputs:
       key: "$(GEMFILE_LOCK_PATH) | $(DEPENDENCIES_SCRIPT_PATH)"
-      path: $(agentHomeDirectory)/.rbenv
+      path: $(BUNDLE_PATH)
+  - task: Cache@2
+	  displayName: "Cache Pods"
+    condition: succeededOrFailed()
+    continueOnError: true
+    inputs:
+      key: 'pods | Podfile.lock'
+      path: $(POD_DIRECTORY)
+  - task: UseRubyVersion@0
+    displayName: "Select Ruby version > 2.7.0 to run on an agent"
+    inputs:
+      versionSpec: "= 2.7"
+      addToPath: true
+  - task: CocoaPods@0
+    displayName: "Install cocoapods and run pod install"
+    inputs:
+      projectDirectory: $(PODFILE_PATH)
   - task: Bash@3
     displayName: "Install dependencies"
     condition: succeededOrFailed()

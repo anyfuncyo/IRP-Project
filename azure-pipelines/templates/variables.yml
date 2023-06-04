@@ -15,3 +15,7 @@ variables:
     value: $(Build.SourcesDirectory)/Gemfile.lock
   - name: PODFILE_PATH
     value: $(Build.SourcesDirectory)/Example
+  - name: POD_DIRECTORY
+    value: $(Build.SourcesDirectory)/Example/Pods
+  - name: BUNDLE_PATH
+    value: ./vendor/bundle
