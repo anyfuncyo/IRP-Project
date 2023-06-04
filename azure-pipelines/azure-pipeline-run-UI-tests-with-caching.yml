@@ -6,7 +6,7 @@ pool:
 
 variables:
   - template: templates/variables.yml
-  system.debug: 'true'
+  - system.debug: 'true'
 
 stages:
   - stage: ui_tests
