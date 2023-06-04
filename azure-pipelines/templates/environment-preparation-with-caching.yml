@@ -22,7 +22,7 @@ steps:
       key: "$(GEMFILE_LOCK_PATH) | $(DEPENDENCIES_SCRIPT_PATH)"
       path: $(BUNDLE_PATH)
   - task: Cache@2
-	  displayName: "Cache Pods"
+    displayName: "Cache Pods"
     condition: succeededOrFailed()
     continueOnError: true
     inputs:
