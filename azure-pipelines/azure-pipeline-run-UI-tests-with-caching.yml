@@ -1,5 +1,5 @@
 trigger:
-  - none
+  - test-with-caching
 
 pool:
   vmImage: "macOS-12"

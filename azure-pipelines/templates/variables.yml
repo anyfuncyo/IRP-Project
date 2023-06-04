@@ -13,6 +13,8 @@ variables:
     value: $(Build.SourcesDirectory)/scripts/dependencies-without-ruby-setup.sh
   - name: GEMFILE_LOCK_PATH
     value: $(Build.SourcesDirectory)/Gemfile.lock
+  - name: PODFILE_LOCK_PATH
+    value: $(Build.SourcesDirectory)/Example/Podfile.lock
   - name: PODFILE_PATH
     value: $(Build.SourcesDirectory)/Example
   - name: POD_DIRECTORY

@@ -26,7 +26,7 @@ steps:
     condition: succeededOrFailed()
     continueOnError: true
     inputs:
-      key: 'pods | Podfile.lock'
+      key: 'pods | $(PODFILE_LOCK_PATH)'
       path: $(POD_DIRECTORY)
   - task: UseRubyVersion@0
     displayName: "Select Ruby version > 2.7.0 to run on an agent"
