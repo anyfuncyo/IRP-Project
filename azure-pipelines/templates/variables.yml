@@ -21,3 +21,5 @@ variables:
     value: $(Build.SourcesDirectory)/Example/Pods
   - name: BUNDLE_PATH
     value: ./vendor/bundle
+  - name: SYSTEM_DEBUG
+    value: true
