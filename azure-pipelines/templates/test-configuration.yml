@@ -1,6 +1,7 @@
 # ui-test-shards.yml
 jobs:
   - job: build
+    displayName: "Run tests"
     steps:
       - template: environment-preparation-without-caching.yml
       - template: fastlane.yml

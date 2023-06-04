@@ -17,8 +17,10 @@ steps:
   - task: UseRubyVersion@0
     displayName: "Select Ruby version > 2.7.0 to run on an agent"
     inputs:
-      versionSpec: ">= 2.7"
+      versionSpec: "= 2.7"
       addToPath: true
+  - task: CocoaPods@0
+    displayName: "Install cocoapods and run pod install"
   - task: Bash@3
     displayName: "Install dependencies"
     condition: succeededOrFailed()
