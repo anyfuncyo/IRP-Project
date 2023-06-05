@@ -21,6 +21,7 @@ steps:
     inputs:
       key: "gems | $(GEMFILE_LOCK_PATH)"
       path: $(BUNDLE_PATH)
+      cacheHitVar: "GEMS_CACHE_RESTORED"
   - task: Cache@2
     displayName: "Cache Pods"
     condition: succeededOrFailed()
@@ -41,7 +42,7 @@ steps:
       projectDirectory: $(PODFILE_PATH)
   - task: Bash@3
     displayName: "Install dependencies"
-    condition: succeededOrFailed()
+    condition: ne(variables.GEMS_CACHE_RESTORED, 'true')
     inputs:
       targetType: filePath
       filePath: $(DEPENDENCIES_SCRIPT_PATH)
@@ -51,4 +52,9 @@ steps:
     inputs:
       PathtoPublish: $(PODFILE_LOCK_PATH)
       ArtifactName: "Podfile.lock"
+      publishLocation: "Container"
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: $(GEMFILE_LOCK_PATH)
+      ArtifactName: "Gemfile.lock"
       publishLocation: "Container"
