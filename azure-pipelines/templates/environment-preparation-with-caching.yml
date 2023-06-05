@@ -28,6 +28,7 @@ steps:
     inputs:
       key: "pods | $(PODFILE_LOCK_PATH)"
       path: $(POD_DIRECTORY)
+      cacheHitVar: 'PODS_CACHE_RESTORED'
   - task: UseRubyVersion@0
     displayName: "Select Ruby version > 2.7.0 to run on an agent"
     inputs:
@@ -35,6 +36,7 @@ steps:
       addToPath: true
   - task: CocoaPods@0
     displayName: "Install cocoapods and run pod install"
+    condition: ne(variables.PODS_CACHE_RESTORED, 'true')
     inputs:
       projectDirectory: $(PODFILE_PATH)
   - task: Bash@3

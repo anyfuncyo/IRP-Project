@@ -1,6 +1,6 @@
 {
   "name": "TABTestKit",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "summary": "Strongly typed Swift wrapper around XCTest / XCUI, enabling you to write BDD-style automation tests, without writing much code at all.",
   "homepage": "https://github.com/theappbusiness/TABTestKit",
   "license": {
@@ -18,7 +18,7 @@
   },
   "source": {
     "git": "https://github.com/theappbusiness/TABTestKit.git",
-    "tag": "1.7.1"
+    "tag": "1.8.0"
   },
   "platforms": {
     "ios": "12.4"
