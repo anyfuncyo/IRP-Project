@@ -28,9 +28,9 @@ steps:
     inputs:
       key: "pods | $(PODFILE_LOCK_PATH)"
       path: $(POD_DIRECTORY)
-      cacheHitVar: 'PODS_CACHE_RESTORED'
+      cacheHitVar: "PODS_CACHE_RESTORED"
   - task: UseRubyVersion@0
-    displayName: "Select Ruby version > 2.7.0 to run on an agent"
+    displayName: "Select Ruby version 2.7.0 to run on an agent"
     inputs:
       versionSpec: "= 2.7"
       addToPath: true
@@ -47,3 +47,8 @@ steps:
       filePath: $(DEPENDENCIES_SCRIPT_PATH)
     env:
       RUBY_CONFIGURE_OPTS: "--with-openssl-dir=/usr/local/opt/openssl@1.1"
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: $(PODFILE_LOCK_PATH)
+      ArtifactName: "Podfile.lock"
+      publishLocation: "Container"
