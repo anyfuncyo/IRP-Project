@@ -41,7 +41,7 @@ steps:
     inputs:
       projectDirectory: $(PODFILE_PATH)
   - task: Bash@3
-    displayName: "Install bundler and gem"
+    displayName: "Install bundler and gems"
     condition: ne(variables.GEMS_CACHE_RESTORED, 'true')
     inputs:
       targetType: filePath

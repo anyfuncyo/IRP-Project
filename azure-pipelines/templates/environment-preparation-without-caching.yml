@@ -24,10 +24,15 @@ steps:
     inputs:
       projectDirectory: $(PODFILE_PATH)
   - task: Bash@3
-    displayName: "Install dependencies"
+    displayName: "Install bundler and gems"
     condition: succeededOrFailed()
     inputs:
       targetType: filePath
-      filePath: $(DEPENDENCIES_SCRIPT_PATH)
+      filePath: $(DEPENDENCIES_SCRIPT_PATH_BUNDLER_AND_GEM_SETUP)
     env:
       RUBY_CONFIGURE_OPTS: "--with-openssl-dir=/usr/local/opt/openssl@1.1"
+  - task: Bash@3
+    displayName: "Check Xcode install "
+    inputs:
+      targetType: filePath
+      filePath: $(DEPENDENCIES_SCRIPT_PATH_XCODE_SETUP)
