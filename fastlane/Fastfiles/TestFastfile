@@ -2,6 +2,9 @@
 
 platform :ios do
     desc "Run UI tests"
+    before_all do
+        ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "20"
+    end
     lane :ui_test do
         run_tests(
             workspace: "Example/TABTestKit.xcworkspace",
