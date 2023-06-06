@@ -1,12 +1,12 @@
 trigger:
-  - test-with-caching
+  - none
 
 pool:
   vmImage: "macOS-12"
 
 variables:
   - template: templates/variables.yml
-  
+
 stages:
   - stage: ui_tests
     displayName: "UI tests"

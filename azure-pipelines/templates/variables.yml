@@ -9,8 +9,10 @@ variables:
     value: anyfuncyo/IRP-Project
   - name: GIT_COMMIT_HASH
     value: $(Build.SourceVersion)
-  - name: DEPENDENCIES_SCRIPT_PATH
-    value: $(Build.SourcesDirectory)/scripts/dependencies-without-ruby-setup.sh
+  - name: DEPENDENCIES_SCRIPT_PATH_BUNDLER_AND_GEM_SETUP
+    value: $(Build.SourcesDirectory)/scripts/dependencies-bundler-and-gem-setup.sh
+  - name: DEPENDENCIES_SCRIPT_PATH_XCODE_SETUP
+    value: $(Build.SourcesDirectory)/scripts/dependencies-xcode-setup.sh
   - name: GEMFILE_LOCK_PATH
     value: $(Build.SourcesDirectory)/Gemfile.lock
   - name: PODFILE_LOCK_PATH
