@@ -9,5 +9,4 @@ steps:
     inputs:
       targetType: inline
       script: |
-        eval "$(rbenv init -)"
         bundle exec fastlane ${{ parameters.lane }}
