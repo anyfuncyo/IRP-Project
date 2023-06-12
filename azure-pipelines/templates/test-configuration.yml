@@ -1,12 +1,17 @@
 # ui-test-shards.yml
+parameters:
+  - name: envSettings
+    displayName: Environment preparation settings
+    trye: string
+
 jobs:
   - job: build
     displayName: "Run tests"
     steps:
-      - template: environment-preparation-without-caching.yml
+      - template: ${{ parameters.envSettings }}.yml
       - template: fastlane.yml
         parameters:
-          lane: "ui_test build_for_testing:true"
+          lane: "ui_test"
       - task: PublishPipelineArtifact@1
         displayName: "Publish UI test result"
         condition: succeededOrFailed()
