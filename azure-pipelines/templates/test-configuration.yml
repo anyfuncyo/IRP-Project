@@ -3,6 +3,9 @@ parameters:
   - name: envSettings
     displayName: Environment preparation settings
     type: string
+  - name: fastlaneSettings
+    displayName: Fastlane lane to run
+    type: string
 
 jobs:
   - job: build
@@ -11,7 +14,7 @@ jobs:
       - template: ${{ parameters.envSettings }}.yml
       - template: fastlane.yml
         parameters:
-          lane: "ui_test"
+          lane: "${{ parameters.fastlaneSettings }}"
       - task: PublishPipelineArtifact@1
         displayName: "Publish UI test result"
         condition: succeededOrFailed()

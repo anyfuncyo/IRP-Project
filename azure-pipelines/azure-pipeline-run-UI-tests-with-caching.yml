@@ -14,3 +14,4 @@ stages:
       - template: templates/test-configuration.yml
         parameters: 
           envSettings: environment-preparation-with-caching
+          fastlaneSettings: build_and_run_ui_test

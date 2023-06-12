@@ -12,6 +12,5 @@ stages:
     displayName: "UI tests"
     jobs:
       - template: templates/test-configuration.yml
-        parameters: 
+        parameters:
           envSettings: environment-preparation-without-caching
-          fastlaneSettings: build_and_run_ui_test
