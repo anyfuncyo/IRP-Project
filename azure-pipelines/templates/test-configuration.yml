@@ -2,7 +2,7 @@
 parameters:
   - name: envSettings
     displayName: Environment preparation settings
-    trye: string
+    type: string
 
 jobs:
   - job: build
