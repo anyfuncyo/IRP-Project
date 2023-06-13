@@ -9,10 +9,10 @@ variables:
 
 stages:
   - stage: build_for_testing
-    displayName: "Compile the app for testing"
+    displayName: Compile the app for testing
     jobs:
       - template: templates/test-configuration-multiple-agents.yml
         parameters:
           envSettings: environment-preparation-without-caching
           fastlaneSettings: build_for_testing
-          jobSettings: BuildForTesting
+          jobSettings: Build for Testing
