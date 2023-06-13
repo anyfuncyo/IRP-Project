@@ -8,9 +8,11 @@ variables:
   - template: templates/variables.yml
 
 stages:
-  - stage: ui_tests
-    displayName: "UI tests"
+  - stage: build_for_testing
+    displayName: "Compile the app for testing"
     jobs:
-      - template: templates/test-configuration.yml
+      - template: templates/test-configuration-multiple-agents.yml
         parameters:
           envSettings: environment-preparation-without-caching
+          fastlaneSettings: build_for_testing
+          jobSettings: Build for testing

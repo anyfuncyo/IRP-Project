@@ -15,3 +15,4 @@ stages:
         parameters: 
           envSettings: environment-preparation-without-caching
           fastlaneSettings: build_and_run_ui_test
+          jobSettings: Build and Run tests
