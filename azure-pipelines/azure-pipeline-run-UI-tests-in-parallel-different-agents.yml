@@ -13,6 +13,6 @@ stages:
     jobs:
       - template: templates/test-configuration-multiple-agents.yml
         parameters:
-          envSettings: environment-preparation-without-caching
+          envSettings: environment-preparation-with-caching
           fastlaneSettings: build_for_testing
           jobSettings: Build for Testing

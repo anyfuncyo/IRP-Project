@@ -8,8 +8,8 @@ variables:
   - template: templates/variables.yml
 
 stages:
-  - stage: ui_tests
-    displayName: "UI tests"
+  - stage: build_and_run_tests
+    displayName: UI tests
     jobs:
       - template: templates/test-configuration.yml
         parameters: 
