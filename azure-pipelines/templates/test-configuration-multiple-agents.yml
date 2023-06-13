@@ -23,7 +23,7 @@ jobs:
         condition: succeededOrFailed()
         inputs:
           artifactName: $(BUILD_ARTIFACT_NAME)
-          targetPath: $(TEST_OUTPUT_PATH)
+          targetPath: $(BUILD_OUTPUT_PATH)
   - job: run_tests
     displayName: Run tests
     dependsOn: build
