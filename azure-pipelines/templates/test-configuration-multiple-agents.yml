@@ -21,7 +21,7 @@ jobs:
       - task: PublishPipelineArtifact@1
         displayName: "Publish build"
         condition: succeededOrFailed()
-  - job: run tests
+  - job: run_tests
     displayName: Run tests
     dependsOn: build
     condition: succeededOrFailed()
