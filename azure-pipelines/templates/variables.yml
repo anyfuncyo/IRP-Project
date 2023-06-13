@@ -1,10 +1,14 @@
 variables:
   - name: UI_TEST_RESULT_ARTIFACT_NAME
     value: ui_test_result
+  - name: BUILD_ARTIFACT_NAME
+    value: xctestrun_output
   - name: DERIVED_DATA_PATH
     value: derived_data
   - name: TEST_OUTPUT_PATH
     value: $(Build.SourcesDirectory)/fastlane/test_output
+  - name: BUILD_OUTPUT_PATH
+    value: $(Build.SourcesDirectory)/Example/build/Build/Products
   - name: NATIVE_IOS_REPO_PATH
     value: anyfuncyo/IRP-Project
   - name: GIT_COMMIT_HASH
