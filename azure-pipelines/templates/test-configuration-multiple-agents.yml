@@ -22,6 +22,6 @@ jobs:
         displayName: "Publish build"
         condition: succeededOrFailed()
   - job: run tests
-    displayName: "Run tests"
+    displayName: Run tests
     dependsOn: build
     condition: succeededOrFailed()
