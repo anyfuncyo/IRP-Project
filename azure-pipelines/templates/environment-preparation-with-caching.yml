@@ -54,11 +54,13 @@ steps:
       targetType: filePath
       filePath: $(DEPENDENCIES_SCRIPT_PATH_XCODE_SETUP)
   - task: PublishBuildArtifacts@1
+    displayName: "Upload Podfile.lock"
     inputs:
       PathtoPublish: $(PODFILE_LOCK_PATH)
       ArtifactName: "Podfile.lock"
       publishLocation: "Container"
   - task: PublishBuildArtifacts@1
+    displayName: "Upload Gemfile.lock"
     inputs:
       PathtoPublish: $(GEMFILE_LOCK_PATH)
       ArtifactName: "Gemfile.lock"
