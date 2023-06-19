@@ -26,7 +26,7 @@ jobs:
         inputs:
           artifactName: $(BUILD_ARTIFACT_NAME)
           targetPath: $(BUILD_OUTPUT_PATH)
-  - ${{ each index in parameter.indices }}:
+  - ${{ each index in parameters.indices }}:
       - job: shard_${{ index }}
         dependsOn: [build]
         condition: succeeded()
