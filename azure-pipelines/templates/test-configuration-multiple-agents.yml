@@ -32,6 +32,7 @@ jobs:
         condition: succeeded()
         timeoutInMinutes: 15
         steps:
+          - template: ${{ parameters.envSettings }}.yml
           - task: DownloadPipelineArtifact@2
             displayName: Dowload UI test build
             inputs:
