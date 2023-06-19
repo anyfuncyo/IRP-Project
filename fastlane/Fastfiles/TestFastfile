@@ -111,7 +111,7 @@ platform :ios do
 
 
         # Check if the computed all_sharded_tests array contains all tests extraxted from the test plan
-        if (all_tests & all_sharded_tests,flattern) != all_tests
+        if (all_tests & all_sharded_tests.flattern) != all_tests
             UI.test_failure! "Computed test shard does not contain all tests from test plan"
         end
 
