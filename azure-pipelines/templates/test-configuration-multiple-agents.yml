@@ -32,7 +32,7 @@ jobs:
         condition: succeeded()
         timeoutInMinutes: 15
         steps:
-          - task: DowloadPipelineArtifacts@2
+          - task: DownloadPipelineArtifacts@2
             displayName: Dowload UI test build
             inputs:
               buildType: current
