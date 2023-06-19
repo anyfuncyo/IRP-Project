@@ -39,7 +39,6 @@ jobs:
               artifactName: $(BUILD_ARTIFACT_NAME)
               targetPath: $(BUILD_OUTPUT_PATH)
           - template: fastlane.yml
-            displayName: Run parallel testing
             parameters:
               lane: "ui_test_shard shard_number: {{ index }}"
           - task: PublishPipelineArtifact@1
