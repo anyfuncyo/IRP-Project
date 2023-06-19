@@ -1,10 +1,12 @@
 # vim: syntax=ruby ts=2 sw=2 sts=2 et
 
 platform :ios do
-    desc "Run UI tests"
+    
     before_all do
         ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "20"
     end
+
+    desc "Run UI tests"
     lane :build_and_run_ui_test do
         run_tests(
             workspace: "Example/TABTestKit.xcworkspace",
@@ -13,6 +15,8 @@ platform :ios do
             testplan: "UITests"
         )
     end
+
+    desc "Create build to run UI tests"
     lane :build_for_testing do
         run_tests(
             workspace: "Example/TABTestKit.xcworkspace",
@@ -22,4 +26,103 @@ platform :ios do
             derived_data_path: "Example/build"
         )
     end
+    
+    desc "Run sliced UI test plan"
+    lane :ui_test_shard do |options|
+        shard_number = options[:shard_number]
+
+        # Check for shard number provided from pipeline
+        if shard_number.nil?
+            UI.test_failure! "Shard number was not found, fail to run UI tests"
+        end
+
+        # Check for test to run per shard
+        test_to_run_per_shard = sharded_test(
+            shard_index: shard_number,
+            percentage_in_each_shard: ['0.5,0.5'] # spliting the test plan half to each agent
+        )
+
+        if test_to_run_per_shard.empty?
+            UI.test_failure! "0 test is found in shard file"
+        end
+
+        test_to_run_json = JSON.parse(test_to_run_per_shard)
+        UI.message "Running #{test_to_run_json.count} UI tests on Shard #{shard_number}"
+        run_tests(
+            workspace: "Example/TABTestKit.xcworkspace",
+            devices: ["iPhone 14 (16.2)"],
+            only_testing: test_to_run_json
+            test_without_building: true
+        )
+
+    end
+
+
+    desc "Returns an array of tests to run per shard"
+    private_lane: sharded_tests do |options|
+        # Returns a list of all tests in a test plan and the total tests count
+        def parse_selectedTests_from_xctestplan ()
+            test_plan_location = "UITests.xctestplan"
+            test_plan = File.read(test_plan_location)
+            data_hash = JSON.parse(test_plan)
+
+            test_targets = data_hash['testTargets']
+            selected_tests = "selectedTests" 
+
+            begin
+            # Find object position of the selectedTests block
+                all_tests = test_targets[0][selected_tests].sort()
+                rescue Errno::ENOENT => e
+                    UI.test_failure! "File or directory '#{test_plan_location}' doesn't exist."
+                rescue TypeError => e
+                    UI.test_failure! "Formatting error in UITests.xctestplan, #{selected_tests} block was not found."
+            end
+    
+            return all_tests
+
+        end
+        all_tests = parse_selectedTests_from_xctestplan
+        total_test_count = all_tests.size
+        UI.message "Total test count: #{total_test_count}"
+
+
+        # Map an array of tests into each shard based on the shard size(%)
+        current_cumulative_shard_amount = 0
+        current_shard_index = 0
+        shard_sizes = options[:percentage_in_each_shard].split(",").map {|shard_size| shard_size.to_f}
+        UI.message "Determining tests to run in shard #{options[:shard_index]} "
+        all_sharded_tests = shard_sizes.map { |shard_size|
+            shard_start_percentage = current_cumulative_shard_amount.round(2)
+            shard_end_percentage = (shard_size + current_cumulative_shard_amount).round(2)
+            UI.message "From percenatge #{shard_start_percentage} to #{shard_end_percentage}"
+
+            shard_start_index = current_shard_index
+            shard_end_index = (all_tests.size * shard_end_percentage).to_i
+            UI.message "This shard should contain tests from index #{shard_start_index} to #{shard_end_index}"
+
+            UI.message "Allocating tests into shard #{options[:shard_index]}"
+            sharded_tests = all_tests.slice(shard_start_index..shard_end_index)
+
+            current_cumulative_shard_amount += shard_size
+            current_shard_index = shard_end_index + 1
+
+            sharded_tests
+        }
+
+
+        # Check if the computed all_sharded_tests array contains all tests extraxted from the test plan
+        if (all_tests & all_sharded_tests,flattern) != all_tests
+            UI.test_failure! "Computed test shard does not contain all tests from test plan"
+        end
+
+        tests_allocated_to_a_shard = all_sharded_tests[options[:shard_index].to_i]
+        
+        tests_allocated_to_a_shard.map { |test_name| "TABTestKit_ExampleUITests/#{test_name.gsub('()', '')}"}.to_json
+        
+        
+    end
+        
+
+
+
 end

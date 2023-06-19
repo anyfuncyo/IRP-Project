@@ -24,7 +24,25 @@ jobs:
         inputs:
           artifactName: $(BUILD_ARTIFACT_NAME)
           targetPath: $(BUILD_OUTPUT_PATH)
-  - job: run_tests
-    displayName: Run tests
-    dependsOn: build
-    condition: succeededOrFailed()
+  - ${{ each index in parameter.indices }}:
+      - job: shard_${{ index }}
+        dependsOn: [build]
+        condition: succeeded()
+        timeoutInMinutes: 15
+        steps:
+          - task: DowloadPipelineArtifacts@2
+            displayName: Dowload UI test build
+            inputs:
+              buildType: current
+              artifactName: $(BUILD_ARTIFACT_NAME)
+              targetPath: $(BUILD_OUTPUT_PATH)
+          - template: fastlane.yml
+            displayName: Run parallel testing
+            parameters:
+              lane: "ui_test_shard shard_number: {{ index }}"
+          - task: PublishPipelineArtifact@1
+            displayName: Publish shard ${{ index }} test results
+            condition: succeededOrFailed()
+            inputs:
+              artifactName: $(UI_TEST_RESULT_ARTIFACT_NAME)${{ index }}
+              targetPath: $(TEST_OUTPUT_PATH)

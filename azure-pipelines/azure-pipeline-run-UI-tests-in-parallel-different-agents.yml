@@ -16,3 +16,6 @@ stages:
           envSettings: environment-preparation-with-caching
           fastlaneSettings: build_for_testing
           jobSettings: Build for Testing
+          indices:
+            - 0
+            - 1
