@@ -9,6 +9,8 @@ parameters:
   - name: jobSettings
     displayName: Pipeline job description
     type: string
+  - name: indices
+    type: object
 
 jobs:
   - job: build
