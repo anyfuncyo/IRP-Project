@@ -100,7 +100,7 @@ platform :ios do
             shard_end_index = (all_tests.size * shard_end_percentage).to_i
             UI.message "This shard should contain tests from index #{shard_start_index} to #{shard_end_index}"
 
-            UI.message "Allocating tests into shard #{options[:shard_index]}"
+            UI.message "Allocating tests into shard #{current_shard_index}"
             sharded_tests = all_tests.slice(shard_start_index..shard_end_index)
 
             current_cumulative_shard_amount += shard_size
@@ -111,7 +111,7 @@ platform :ios do
 
 
         # Check if the computed all_sharded_tests array contains all tests extraxted from the test plan
-        if (all_tests & all_sharded_tests.flattern) != all_tests
+        if (all_tests & all_sharded_tests.flatten) != all_tests
             UI.test_failure! "Computed test shard does not contain all tests from test plan"
         end
 
