@@ -8,7 +8,7 @@ variables:
   - name: TEST_OUTPUT_PATH
     value: $(Build.SourcesDirectory)/fastlane/test_output
   - name: BUILD_OUTPUT_PATH
-    value: $(Build.SourcesDirectory)/Example/build/Build/Products
+    value: $(DERIVED_DATA_PATH)/Example/build/Build/Products
   - name: NATIVE_IOS_REPO_PATH
     value: anyfuncyo/IRP-Project
   - name: GIT_COMMIT_HASH
