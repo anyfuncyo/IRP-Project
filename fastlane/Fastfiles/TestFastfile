@@ -53,7 +53,8 @@ platform :ios do
             devices: ["iPhone 14 (16.2)"],
             only_testing: test_to_run_json,
             scheme: "TABTestKit_ExampleUITests",
-            test_without_building: true
+            test_without_building: true,
+            derived_data_path: "Example/build"
         )
 
     end
@@ -101,7 +102,11 @@ platform :ios do
             shard_end_index = (all_tests.size * shard_end_percentage).to_i
             UI.message "This shard should contain tests from index #{shard_start_index} to #{shard_end_index}"
 
-            UI.message "Allocating tests into shard #{current_shard_index - 1}"
+            if shard_start_index == 0
+                UI.message "Allocating tests into shard 0"
+            else
+                UI.message "Allocating tests into shard #{shard_end_index - shard_start_index}"
+            end
             sharded_tests = all_tests.slice(shard_start_index..shard_end_index)
 
             current_cumulative_shard_amount += shard_size
