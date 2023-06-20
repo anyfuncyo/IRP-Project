@@ -39,7 +39,7 @@ platform :ios do
         # Check for test to run per shard
         test_to_run_per_shard = sharded_tests(
             shard_index: shard_number,
-            percentage_in_each_shard: ['0.5,0.5'] # spliting the test plan half to each agent
+            percentage_in_each_shard: '0.5,0.5' # spliting the test plan half to each agent
         )
 
         if test_to_run_per_shard.empty?
