@@ -34,7 +34,7 @@ jobs:
         steps:
           - template: ${{ parameters.envSettings }}.yml
           - task: DownloadPipelineArtifact@2
-            displayName: Dowload UI test build
+            displayName: Download UI test build
             inputs:
               buildType: current
               artifactName: $(BUILD_ARTIFACT_NAME)
