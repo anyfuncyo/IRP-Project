@@ -18,12 +18,8 @@ platform :ios do
 
     desc "Create build to run UI tests"
     lane :build_for_testing do
-        run_tests(
-            workspace: "Example/TABTestKit.xcworkspace",
-            devices: ["iPhone 14 (16.2)"],
-            scheme: "TABTestKit_ExampleUITests",
-            build_for_testing: true,
-            derived_data_path: ENV['DERIVED_DATA_PATH']
+        run_with_multi_scan(
+            build_for_testing: true
         )
     end
     
@@ -48,14 +44,9 @@ platform :ios do
 
         test_to_run_json = JSON.parse(test_to_run_per_shard)
         UI.message "Running #{test_to_run_json.count} UI tests on Shard #{shard_number}"
-        run_tests(
-            workspace: "Example/TABTestKit.xcworkspace",
-            devices: ["iPhone 14 (16.2)"],
+        run_with_multi_scan(
             only_testing: test_to_run_json,
-            scheme: "TABTestKit_ExampleUITests",
-            test_without_building: true,
-            derived_data_path: ENV['DERIVED_DATA_PATH'],
-            xctestrun: ENV['BUILD_OUTPUT_PATH']
+            test_without_building: true
         )
 
     end
@@ -128,6 +119,20 @@ platform :ios do
         
         
     end
+
+    desc "Run tests with multi scan"
+    private_lane :run_with_multi_scan do
+        multi_scan(
+            workspace: "Example/TABTestKit.xcworkspace",
+            devices: ["iPhone 14 (16.2)"],
+            scheme: "TABTestKit_ExampleUITests",
+            derived_data_path: ENV['DERIVED_DATA_PATH']
+        )
+    end
+
+
+
+
         
 
 
