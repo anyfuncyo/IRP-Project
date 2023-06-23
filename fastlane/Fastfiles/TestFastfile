@@ -53,7 +53,10 @@ platform :ios do
             devices: ["iPhone 14 (16.2)"],
             scheme: "TABTestKit_ExampleUITests",
             derived_data_path: ENV['DERIVED_DATA_PATH'],
-            test_without_building: true
+            only_testing: test_to_run_json,
+            test_without_building: true,
+            result_bundle: true,
+            output_types: 'junit,xcresult'
         )
 
     end
