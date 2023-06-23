@@ -121,7 +121,7 @@ platform :ios do
     end
 
     desc "Run tests with multi scan"
-    private_lane :run_with_multi_scan do
+    private_lane :run_with_multi_scan do |options|
         multi_scan(
             workspace: "Example/TABTestKit.xcworkspace",
             devices: ["iPhone 14 (16.2)"],
