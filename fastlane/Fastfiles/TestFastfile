@@ -126,7 +126,9 @@ platform :ios do
             workspace: "Example/TABTestKit.xcworkspace",
             devices: ["iPhone 14 (16.2)"],
             scheme: "TABTestKit_ExampleUITests",
-            derived_data_path: ENV['DERIVED_DATA_PATH']
+            derived_data_path: ENV['DERIVED_DATA_PATH'],
+            build_for_testing: options[:build_for_testing],
+            test_without_building: options[:build_for_testing]
         )
     end
 
