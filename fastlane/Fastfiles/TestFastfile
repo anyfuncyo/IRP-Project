@@ -63,8 +63,7 @@ platform :ios do
     private_lane :sharded_tests do |options|
         # Returns a list of all tests in a test plan and the total tests count
         def parse_selectedTests_from_xctestplan ()
-            # test_plan_location = "#{ENV['BUILD_REPOSITORY_LOCALPATH']}/Example/UITests.xctestplan"
-            test_plan_location = "/Users/anniefung/Desktop/IRP/IRP-Project/Example/UITests.xctestplan"
+            test_plan_location = "#{ENV['BUILD_REPOSITORY_LOCALPATH']}/Example/UITests.xctestplan"
             test_plan = File.read(test_plan_location)
             data_hash = JSON.parse(test_plan)
 
