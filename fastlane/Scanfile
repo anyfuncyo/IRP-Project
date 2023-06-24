@@ -10,7 +10,5 @@ workspace "Example/TABTestKit.xcworkspace"
 
 derived_data_path ENV['DERIVED_DATA_PATH']
 
-# Whether or not to generate a result bundle when running tests
-result_bundle true
 
 
