@@ -19,10 +19,7 @@ platform :ios do
     desc "Create build to run UI tests"
     lane :build_for_testing do
         multi_scan(
-            workspace: "Example/TABTestKit.xcworkspace",
-            devices: ["iPhone 14 (16.2)"],
             scheme: "TABTestKit_ExampleUITests",
-            derived_data_path: ENV['DERIVED_DATA_PATH'],
             build_for_testing: true
         )
     end
@@ -53,25 +50,21 @@ platform :ios do
 
         UI.message "Running #{test_to_run_json.count} UI tests on Shard #{shard_number}"
         multi_scan(
-            workspace: "Example/TABTestKit.xcworkspace",
-            devices: ["iPhone 14 (16.2)"],
             scheme: "TABTestKit_ExampleUITests",
-            derived_data_path: ENV['DERIVED_DATA_PATH'],
             only_testing: test_to_run_json,
             test_without_building: true,
-            result_bundle: true,
             output_types: 'junit,xcresult',
             output_directory: output_directory
         )
 
     end
 
-
     desc "Returns an array of tests to run per shard."
     private_lane :sharded_tests do |options|
         # Returns a list of all tests in a test plan and the total tests count
         def parse_selectedTests_from_xctestplan ()
-            test_plan_location = "#{ENV['BUILD_REPOSITORY_LOCALPATH']}/Example/UITests.xctestplan"
+            # test_plan_location = "#{ENV['BUILD_REPOSITORY_LOCALPATH']}/Example/UITests.xctestplan"
+            test_plan_location = "/Users/anniefung/Desktop/IRP/IRP-Project/Example/UITests.xctestplan"
             test_plan = File.read(test_plan_location)
             data_hash = JSON.parse(test_plan)
 

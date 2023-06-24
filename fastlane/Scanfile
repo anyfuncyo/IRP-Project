@@ -1,0 +1,16 @@
+# The devices to run the tests on
+devices "iPhone 14 (16.2)"
+
+reset_simulator true
+
+# output from Xcode during the test run
+suppress_xcode_output false
+
+workspace "Example/TABTestKit.xcworkspace"
+
+derived_data_path ENV['DERIVED_DATA_PATH']
+
+# Whether or not to generate a result bundle when running tests
+result_bundle true
+
+
