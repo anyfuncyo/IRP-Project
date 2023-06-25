@@ -1,6 +1,9 @@
 # The devices to run the tests on
 devices "iPhone 14 (16.2)"
 
+# workspace
+workspace "Example/TABTestKit.xcworkspace"
+
 reset_simulator true
 
 # output from Xcode during the test run
