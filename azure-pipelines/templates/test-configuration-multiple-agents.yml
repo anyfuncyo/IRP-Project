@@ -19,7 +19,7 @@ jobs:
       - template: ${{ parameters.envSettings }}.yml
       - template: fastlane.yml
         parameters:
-          lane: "${{ parameters.fastlaneSettings }}"
+          lane: "${{ parameters.fastlaneSettings }} build_for_testing:true"
       - task: PublishPipelineArtifact@1
         displayName: "Publish build"
         condition: succeededOrFailed()

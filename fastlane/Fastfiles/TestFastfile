@@ -16,10 +16,12 @@ platform :ios do
         )
     end
 
-    desc "Create build to run UI tests"
-    lane :build_for_testing do
+    desc "Config to create UI tests build or run UI tests"
+    lane :ui_tests do |options|
         run_with_multi_scan(
-            build_for_testing: true
+            only_testing: options[:only_testing],
+            build_for_testing: options[:build_for_testing],
+            test_without_building: options[:build_for_testing]
         )
     end
     
@@ -45,10 +47,9 @@ platform :ios do
         test_to_run_json = JSON.parse(test_to_run_per_shard)
 
         UI.message "Running #{test_to_run_json.count} UI tests on Shard #{shard_number}"
-        build_for_testing(
+        ui_tests(
             only_testing: test_to_run_json,
-            test_without_building: true,
-            build_for_testing: false
+            test_without_building:true
         )
 
     end
