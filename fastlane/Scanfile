@@ -6,7 +6,6 @@ reset_simulator true
 # output from Xcode during the test run
 suppress_xcode_output false
 
-workspace "Example/TABTestKit.xcworkspace"
 
 derived_data_path ENV['DERIVED_DATA_PATH']
 

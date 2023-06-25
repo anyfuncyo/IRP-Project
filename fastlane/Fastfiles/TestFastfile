@@ -18,8 +18,7 @@ platform :ios do
 
     desc "Create build to run UI tests"
     lane :build_for_testing do
-        multi_scan(
-            scheme: "TABTestKit_ExampleUITests",
+        run_with_multi_scan (
             build_for_testing: true
         )
     end
@@ -45,17 +44,10 @@ platform :ios do
 
         test_to_run_json = JSON.parse(test_to_run_per_shard)
 
-        # Specify output directory where the test results should be stored
-        output_directory = "#{ENV['TEST_OUTPUT_PATH']}"
-
         UI.message "Running #{test_to_run_json.count} UI tests on Shard #{shard_number}"
-        multi_scan(
-            scheme: "TABTestKit_ExampleUITests",
+        run_with_multi_scan (
             only_testing: test_to_run_json,
-            test_without_building: true,
-            output_types: 'junit,xcresult',
-            output_directory: output_directory,
-            result_bundle: true
+            test_without_building: true
         )
 
     end
@@ -130,13 +122,18 @@ platform :ios do
 
     desc "Run tests with multi scan"
     private_lane :run_with_multi_scan do |options|
+
+        # Specify output directory where the test results should be stored
+        output_directory = "#{ENV['TEST_OUTPUT_PATH']}"
+
         multi_scan(
-            workspace: "Example/TABTestKit.xcworkspace",
-            devices: ["iPhone 14 (16.2)"],
             scheme: "TABTestKit_ExampleUITests",
-            derived_data_path: ENV['DERIVED_DATA_PATH'],
             build_for_testing: options[:build_for_testing],
-            test_without_building: options[:build_for_testing]
+            test_without_building: options[:build_for_testing],
+            output_types: 'junit,xcresult',
+            output_directory: output_directory,
+            result_bundle: true,
+            only_testing: options[:only_testing]
         )
     end
 
