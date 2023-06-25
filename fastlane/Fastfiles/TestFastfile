@@ -21,7 +21,7 @@ platform :ios do
         run_with_multi_scan(
             only_testing: options[:only_testing],
             build_for_testing: options[:build_for_testing],
-            test_without_building: options[:build_for_testing]
+            test_without_building: options[:test_without_buildingg]
         )
     end
     
@@ -131,7 +131,7 @@ platform :ios do
         multi_scan(
             scheme: "TABTestKit_ExampleUITests",
             build_for_testing: options[:build_for_testing],
-            test_without_building: options[:build_for_testing],
+            test_without_building: options[:test_without_building],
             output_types: 'junit,xcresult',
             output_directory: output_directory,
             result_bundle: true,
