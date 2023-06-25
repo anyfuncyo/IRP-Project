@@ -6,7 +6,7 @@ variables:
   - name: DERIVED_DATA_PATH
     value: derived_data
   - name: TEST_OUTPUT_PATH
-    value: $(Build.SourcesDirectory)/build/tests
+    value: $(Build.SourcesDirectory)/fastlane/test_output
   - name: BUILD_OUTPUT_PATH
     value: $(DERIVED_DATA_PATH)/Build/Products
   - name: NATIVE_IOS_REPO_PATH

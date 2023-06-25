@@ -46,17 +46,13 @@ platform :ios do
         test_to_run_json = JSON.parse(test_to_run_per_shard)
 
         UI.message "Running #{test_to_run_json.count} UI tests on Shard #{shard_number}"
-        #ui_tests(
-        #    only_testing: test_to_run_json,
-        #    test_without_building:true
-        #)
-
+        
+        # Not using multi-scan here as there is an issue where xctestrun file is not found from derived data folder upon successful test run
         run_tests(
             devices: ["iPhone 14 (16.2)"],
             scheme: "TABTestKit_ExampleUITests",
             testplan: "UITests",
             only_testing: test_to_run_json,
-            output_types: 'junit',
             test_without_building:true
         )
 
