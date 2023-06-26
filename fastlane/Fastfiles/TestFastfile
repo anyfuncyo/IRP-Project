@@ -54,7 +54,7 @@ platform :ios do
             # testplan: "UITests",
             only_testing: test_to_run_json,
             test_without_building:true,
-            xctestrun: "#{ENV['BUILD_OUTPUT_PATH']}/Products/TABTestKit_ExampleUITests_UITests_iphonesimulator16.2-x86_64.xctestrun"
+            xctestrun: "#{ENV['BUILD_OUTPUT_PATH']}/TABTestKit_ExampleUITests_UITests_iphonesimulator16.2-x86_64.xctestrun"
             # xctestrun: "/Users/anniefung/Library/Developer/Xcode/DerivedData/TABTestKit-dvnitfhcpqekttbptsagnjesohnw/Build/Products/TABTestKit_ExampleUITests_UITests_iphonesimulator16.2-x86_64.xctestrun"
         )
 
