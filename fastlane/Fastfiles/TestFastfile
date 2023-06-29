@@ -15,12 +15,14 @@ platform :ios do
         )
     end
 
-     desc "Run UI tests in parallel"
+    desc "Run UI tests in parallel"
     lane :build_and_run_ui_test_in_parallel do
-        run_tests(
-            devices: ["iPhone 14 (16.2)", "iPhone 13 (16.2)"],
+        multi_scan(
+            devices: ["iPhone 14 (16.2)", "iPhone 11 (13.5)"],
             scheme: "TABTestKit_ExampleUITests",
-            testplan: "UITests"
+            testplan: "UITests",
+            batch_count: 3,
+            parallel_testrun_count: 3
         )
     end
 
