@@ -1,0 +1,2 @@
+git config --global core.excludesfile ~/.Example/Pods
+git config --global core.excludesfile ~/.vendor
