@@ -23,13 +23,21 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Run UI tests
 
+### ios build_and_run_ui_test_in_parallel
+
+```sh
+[bundle exec] fastlane ios build_and_run_ui_test_in_parallel
+```
+
+Run UI tests in parallel
+
 ### ios build_for_testing
 
 ```sh
 [bundle exec] fastlane ios build_for_testing
 ```
 
-Create build to run UI tests
+Create xctestrun file
 
 ### ios ui_test_shard
 
