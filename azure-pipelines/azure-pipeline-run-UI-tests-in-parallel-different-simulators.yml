@@ -12,7 +12,7 @@ stages:
     displayName: UI tests
     jobs:
       - template: templates/test-configuration.yml
-        parameters: 
+        parameters:
           envSettings: environment-preparation-with-caching
-          fastlaneSettings: build_and_run_ui_test
-          jobSettings: Build and Run tests
+          fastlaneSettings: build_and_run_ui_test_in_parallel
+          jobSettings: Build and Run tests in parallel
