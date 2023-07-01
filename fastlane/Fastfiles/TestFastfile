@@ -134,7 +134,7 @@ platform :ios do
 
         # Specify output directory where the test results should be stored
         output_directory = "#{ENV['TEST_OUTPUT_PATH']}"
-        # output_directory ="/Users/anniefung/Library/Developer/Xcode/DerivedData/TABTestKit-dvnitfhcpqekttbptsagnjesohnw/Logs/Test/"
+        # output_directory ="/Users/anniefung/Desktop/IRP/IRP-Project/fastlane/test_output"
 
         multi_scan(
             scheme: "TABTestKit_ExampleUITests",
