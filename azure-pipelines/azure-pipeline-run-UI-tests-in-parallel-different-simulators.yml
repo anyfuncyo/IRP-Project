@@ -1,0 +1,18 @@
+trigger:
+  - none
+
+pool:
+  vmImage: "macOS-12"
+
+variables:
+  - template: templates/variables.yml
+
+stages:
+  - stage: build_and_run_tests
+    displayName: UI tests
+    jobs:
+      - template: templates/test-configuration.yml
+        parameters:
+          envSettings: environment-preparation-with-caching
+          fastlaneSettings: build_and_run_ui_test_in_parallel
+          jobSettings: Build and Run tests in parallel

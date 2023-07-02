@@ -8,19 +8,25 @@ platform :ios do
 
     desc "Run UI tests"
     lane :build_and_run_ui_test do
-        run_tests(
-            devices: ["iPhone 14 (16.2)"],
-            scheme: "TABTestKit_ExampleUITests",
+        run_with_multi_scan(
             testplan: "UITests"
         )
     end
 
-    desc "Config to create UI tests build or run UI tests"
-    lane :ui_tests do |options|
+    desc "Run UI tests in parallel"
+    lane :build_and_run_ui_test_in_parallel do
         run_with_multi_scan(
-            only_testing: options[:only_testing],
-            build_for_testing: options[:build_for_testing],
-            test_without_building: options[:test_without_buildingg]
+            testplan: "UITests",
+            batch_count: 3,
+            parallel_testrun_count: 3
+        )
+    end
+
+    desc "Create xctestrun file"
+    lane :build_for_testing do
+        run_with_multi_scan(
+            testplan: "UITests",
+            build_for_testing: true
         )
     end
     
@@ -47,11 +53,7 @@ platform :ios do
 
         UI.message "Running #{test_to_run_json.count} UI tests on Shard #{shard_number}"
         
-        # Not using multi-scan here as there is an issue where xctestrun file is not found from derived data folder upon successful test run
-        run_tests(
-            devices: ["iPhone 14 (16.2)"],
-            scheme: "TABTestKit_ExampleUITests",
-            # testplan: "UITests",
+        run_with_multi_scan(
             only_testing: test_to_run_json,
             test_without_building:true,
             xctestrun: "#{ENV['BUILD_OUTPUT_PATH']}/TABTestKit_ExampleUITests_UITests_iphonesimulator16.2-x86_64.xctestrun"
@@ -65,7 +67,7 @@ platform :ios do
         # Returns a list of all tests in a test plan and the total tests count
         def parse_selectedTests_from_xctestplan ()
             test_plan_location = "#{ENV['BUILD_REPOSITORY_LOCALPATH']}/Example/UITests.xctestplan"
-            # test_plan_location = "/Users/anniefung/Desktop/IRP/IRP-Project/Example/UITests.xctestplan"
+            #test_plan_location = "/Users/anniefung/Desktop/IRP/IRP-Project/Example/UITests.xctestplan"
             test_plan = File.read(test_plan_location)
             data_hash = JSON.parse(test_plan)
 
@@ -134,6 +136,7 @@ platform :ios do
 
         # Specify output directory where the test results should be stored
         output_directory = "#{ENV['TEST_OUTPUT_PATH']}"
+        # output_directory ="/Users/anniefung/Desktop/IRP/IRP-Project/fastlane/test_output"
 
         multi_scan(
             scheme: "TABTestKit_ExampleUITests",
@@ -142,7 +145,8 @@ platform :ios do
             output_types: 'junit,xcresult',
             output_directory: output_directory,
             result_bundle: true,
-            only_testing: options[:only_testing]
+            only_testing: options[:only_testing],
+            clean: true
         )
     end
 end
