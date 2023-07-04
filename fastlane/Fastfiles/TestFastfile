@@ -17,8 +17,8 @@ platform :ios do
     lane :build_and_run_ui_test_in_parallel do
         run_with_multi_scan(
             testplan: "UITests",
-            batch_count: 3,
-            parallel_testrun_count: 3
+            batch_count: 2,
+            parallel_testrun_count: 2
         )
     end
 
