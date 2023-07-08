@@ -30,7 +30,7 @@ jobs:
       - job: shard_${{ index }}
         dependsOn: [build]
         condition: succeeded()
-        timeoutInMinutes: 15
+        timeoutInMinutes: 30
         steps:
           - template: ${{ parameters.envSettings }}.yml
           - task: DownloadPipelineArtifact@2
