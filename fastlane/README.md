@@ -34,7 +34,7 @@ Run UI tests in parallel
 ### ios build_for_testing
 
 ```sh
-[bundle exec] fastlane ios ui_tests
+[bundle exec] fastlane ios build_for_testing
 ```
 
 Create xctestrun file

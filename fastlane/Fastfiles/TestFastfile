@@ -148,7 +148,11 @@ platform :ios do
             output_directory: output_directory,
             result_bundle: true,
             only_testing: options[:only_testing],
-            clean: true
+            clean: true,
+            batch_count: options[:batch_count],
+            parallel_testrun_count: options[:parallel_testrun_count],
+            testplan: options[:testplan]
+
         )
     end
 end
