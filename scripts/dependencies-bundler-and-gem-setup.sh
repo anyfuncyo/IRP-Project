@@ -6,7 +6,7 @@ export LC_ALL="en_US.UTF-8"
 readonly SCRIPTS_DIR="${BASH_SOURCE[0]%/*}"
 
 cd "${SCRIPTS_DIR}/.."
-readonly BUNDLER_VERSION_SPEC='~>1.17.2'
+readonly BUNDLER_VERSION_SPEC='~>2.4.13'
 
 # Check if Homebrew is installed
 if [ -z "$(command -v brew)" ]; then
