@@ -25,8 +25,6 @@ fi
 # use bundler to install the gems specified in your Gemfile
 bundle install
 
-bundle exec fastlane install_plugins
-
 # Check Xcode version on Azure agent
 echo "--- 🛠️  Force Xcode to use system SSH keys when accessing the git repositories"
 defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES
