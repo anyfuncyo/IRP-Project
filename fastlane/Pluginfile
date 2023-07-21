@@ -2,4 +2,4 @@
 #
 # Ensure this file is checked in to source control!
 
-gem 'fastlane-plugin-test_center', :git => 'git@github.com:Cyberbeni/fastlane-plugin-test_center.git' , :branch => 'scan-result-bundle-path'
+gem 'fastlane-plugin-test_center', :git => 'https://github.com/Cyberbeni/fastlane-plugin-test_center.git' , :branch => 'scan-result-bundle-path'
