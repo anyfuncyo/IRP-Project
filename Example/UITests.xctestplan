@@ -14,36 +14,7 @@
   "testTargets" : [
     {
       "selectedTests" : [
-        "CollectionViewTests\/test_collectionView_refresh()",
-        "CollectionViewTests\/test_collectionView_scrolling_up()",
-        "DeepLinkingTests\/test_deep_linking_app_active()",
-        "DeepLinkingTests\/test_deep_linking_app_terminate()",
-        "OtherElementsTests\/test_decimal_pad_keyboard()",
-        "OtherElementsTests\/test_dismiss_alert()",
-        "OtherElementsTests\/test_dismiss_share_sheet()",
-        "OtherElementsTests\/test_email_pad_keyboard()",
-        "OtherElementsTests\/test_image()",
-        "OtherElementsTests\/test_number_pad_keyboard()",
-        "OtherElementsTests\/test_numbers_and_punctuation_keyboard()",
-        "OtherElementsTests\/test_page_indicator()",
-        "OtherElementsTests\/test_phone_pad_keyboard()",
-        "OtherElementsTests\/test_picker()",
-        "OtherElementsTests\/test_secure_text_field()",
-        "OtherElementsTests\/test_segmented_control()",
-        "OtherElementsTests\/test_show_alert_message()",
-        "OtherElementsTests\/test_show_share_sheet()",
-        "OtherElementsTests\/test_slider()",
-        "OtherElementsTests\/test_stepper()",
-        "OtherElementsTests\/test_switch()",
-        "OtherElementsTests\/test_text_field()",
-        "OtherElementsTests\/test_time_picker_hours()",
-        "OtherElementsTests\/test_twitter_keyboard()",
-        "OtherElementsTests\/test_url_keyboard()",
-        "OtherElementsTests\/test_web_search_keyboard()",
-        "PageTests\/test()",
-        "TableTests\/test_open_table_selection_screen()",
-        "TableTests\/test_table_refresh()",
-        "TableTests\/test_table_scroll()"
+        "PageTests\/test()"
       ],
       "target" : {
         "containerPath" : "container:TABTestKit.xcodeproj",
