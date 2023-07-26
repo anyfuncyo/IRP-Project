@@ -41,7 +41,7 @@ jobs:
               targetPath: $(BUILD_OUTPUT_PATH)
           - template: fastlane.yml
             parameters:
-              lane: "ui_test_shard shard_number:${{ index }} --verbose"
+              lane: "ui_test_shard shard_number:${{ index }}"
           - task: PublishPipelineArtifact@1
             displayName: Publish shard ${{ index }} test results
             condition: succeededOrFailed()

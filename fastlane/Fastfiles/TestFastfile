@@ -97,7 +97,6 @@ platform :ios do
         current_cumulative_shard_amount = 0
         current_shard_index = 0
         shard_sizes = options[:percentage_in_each_shard].split(",").map {|shard_size| shard_size.to_f}
-        UI.message "Determining tests to run in shard #{options[:shard_index]} "
         all_sharded_tests = shard_sizes.map { |shard_size|
             shard_start_percentage = current_cumulative_shard_amount.round(2)
             shard_end_percentage = (shard_size + current_cumulative_shard_amount).round(2)
@@ -110,7 +109,7 @@ platform :ios do
             if shard_start_index == 0
                 UI.message "Allocating tests into shard 0"
             else
-                UI.message "Allocating tests into shard #{shard_end_index - shard_start_index}"
+                UI.message "Allocating tests into shard #{options[:shard_index]}"
             end
             sharded_tests = all_tests.slice(shard_start_index..shard_end_index)
 
