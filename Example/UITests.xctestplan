@@ -43,8 +43,7 @@
         "PageTests\/test()",
         "TableTests\/test_open_table_selection_screen()",
         "TableTests\/test_table_refresh()",
-        "TableTests\/test_table_scroll()",
-        "PageTests\/test()"
+        "TableTests\/test_table_scroll()"
       ],
       "target" : {
         "containerPath" : "container:TABTestKit.xcodeproj",
