@@ -7,6 +7,12 @@ readonly SCRIPTS_DIR="${BASH_SOURCE[0]%/*}"
 
 cd "${SCRIPTS_DIR}/.."
 
+# Check if Homebrew is installed
+if [ -z "$(command -v brew)" ]; then
+  echo "--- 🚫 brew not found. Homebrew is not installed"
+  exit 1
+fi
+
 # Check Xcode version on Azure agent
 echo "--- 🛠️  Force Xcode to use system SSH keys when accessing the git repositories"
 defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES
